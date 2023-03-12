@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const fs = require("fs");
 const util = require("util");
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -79,6 +79,6 @@ app.delete("/api/notes/:id", (req, res) => {
   res.sendStatus(204);
 });
 
-app.listen(process.env.PORT || PORT, () =>
+app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT} 🚀`)
 );
